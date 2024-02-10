@@ -8,6 +8,12 @@ app.use(express.json())
 app.use( "/api",employeesRoutes)
 app.use("/api",indexRoutes)
 
+app.use((req , res ,next)=> {
+    res.staus(404).json({
+        message: "Endpoint not found"
+    })
+})
+
 
 
 app.listen(3000)

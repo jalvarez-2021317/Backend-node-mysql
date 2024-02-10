@@ -1,20 +1,6 @@
-import express from "express"
-import employeesRoutes from "./routes/employees.routes.js";
-import indexRoutes from "./routes/index.routes.js";
+import  app  from "./app.js";
+import { PORT } from "./config.js";
 
-const app = express();
+app.listen(PORT)
+console.log("Server running on port:", PORT);
 
-app.use(express.json())
-app.use( "/api",employeesRoutes)
-app.use("/api",indexRoutes)
-
-app.use((req , res ,next)=> {
-    res.staus(404).json({
-        message: "Endpoint not found"
-    })
-})
-
-
-
-app.listen(3000)
-console.log("server Running on port 3000");
